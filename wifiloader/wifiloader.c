@@ -98,9 +98,9 @@ static int load_module(char const *path)
         return -errno;
     }
 
-    // let wifi HAL know we succeeded
+    // The platform Wi-Fi HAL publishes wlan.driver.status after it has
+    // waited for the driver to become ready.
     ALOGV("Successfully loaded WLAN module: %s", WIFI_DRIVER_MODULE_NAME);
-    property_set("wlan.driver.status", "ok");
 
     close(fd);
     return 0;
